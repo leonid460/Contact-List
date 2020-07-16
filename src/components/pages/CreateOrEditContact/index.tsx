@@ -10,6 +10,7 @@ import { getContactWithId } from 'services/getContactWithId';
 import { createContact } from 'services/createContact';
 import { editContact } from 'services/editContact';
 import { Contact } from 'types';
+import { callNotification } from 'utils/callNotification';
 
 
 type CreateOrEditPageProps = {
@@ -38,9 +39,16 @@ const CreateOrEditPage = ({ type }: CreateOrEditPageProps) => {
 
       await makeRequest();
       history.push('/');
+      callNotification({
+        content: `Successfully ${type === 'edit' ? 'edited' : 'created'} contact`,
+        type: 'info'
+      })
 
     } catch (error) {
-      console.log(error)
+      callNotification({
+        content: error.message,
+        type: 'error'
+      })
     }
   }
 
@@ -52,7 +60,10 @@ const CreateOrEditPage = ({ type }: CreateOrEditPageProps) => {
         setPhone(contact.phone);
         setCompany(contact.company);
       } catch (error) {
-        console.log(error);
+        callNotification({
+          content: error.message,
+          type: 'error'
+        })
       }
     },
     [userInfo.token]

@@ -5,7 +5,6 @@ import { ContactsTableParams } from 'variables';
 const buttonCellsWidth = ContactsTableParams.buttonCellsWidth;
 const rowMargin = ContactsTableParams.rowMargin;
 
-
 const TableCell = styled.div`
   display: flex;
   align-items: center;

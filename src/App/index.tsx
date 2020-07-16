@@ -7,7 +7,8 @@ import {
 import GlobalStyle from './GlobalStyle';
 import LoginPage from 'components/pages/LoginPage';
 import MainPage from 'components/pages/MainPage';
-import CreateOrEditPage from 'components/pages/CreateOrEditContact'
+import CreateOrEditPage from 'components/pages/CreateOrEditContact';
+import NotificationTray from 'components/molecules/NotificationTray';
 import { useStore } from 'store';
 
 const CreatePage = () => <CreateOrEditPage type='create' />;
@@ -25,6 +26,7 @@ export default () => {
         <Route path='/create'><CreatePage /></Route>
         <Route path='/edit/:id'><EditPage /></Route>
       </Switch>
+      <NotificationTray />
     </>
   )
 }

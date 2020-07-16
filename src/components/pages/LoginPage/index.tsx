@@ -8,6 +8,7 @@ import SimpleWindowPage from 'components/templates/SimpleWindowPage';
 import { useStore } from 'store';
 import { login } from 'store/UserInfo/actions';
 import { auth } from 'services/auth';
+import { callNotification } from 'utils/callNotification';
 
 
 const LoginPage = () => {
@@ -23,8 +24,15 @@ const LoginPage = () => {
       const token = await auth(username, password);
       userInfoDispatch(login({username, token}));
       history.push('/');
+      callNotification({
+        content: 'Welcome back!',
+        type: 'info'
+      })
     } catch (error) {
-      console.log(error)
+      callNotification({
+        content: error.message,
+        type: 'error'
+      })
     }
   }
 

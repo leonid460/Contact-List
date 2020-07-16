@@ -1,23 +1,8 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Input from 'components/atoms/Input';
-import Button from 'components/atoms/Button';
+import Wrapper from './__styled-components/Wrapper';
+import StyledButton from './__styled-components/StyledButton';
 
-
-const Wrapper = styled.div`
-  display: flex;
-  padding: 10px;
-  
-`;
-
-const StyledButton = styled(Button)`
-  margin-left: 10px;
-  padding: 0 10px;
-  box-sizing: border-box;
-  font-size: 20px;
-  font-weight: bold;
-  font-family: 'Material Icons';
-`;
 
 type SearchBarProps = {
   value: string;

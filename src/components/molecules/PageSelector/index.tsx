@@ -1,18 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import PageSelectorWrapper from './__styled-components/PageSelectorWrapper';
 import PrevButton from 'components/atoms/ArrowButton';
+import ForwardButton from './__styled-components/ForwardButton';
 
-
-const PageSelectorWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding: 15px;
-  box-sizing: border-box;
-`;
-
-const ForwardButton = styled(PrevButton)`
-  transform: rotate(180deg);
-`;
 
 type PageSelectorProps = {
   currentPage: number;
@@ -33,7 +23,6 @@ const PageSelector = ({currentPage, maxPage, setPage}: PageSelectorProps) => {
     }
   }
 
-  
   return (
     <PageSelectorWrapper>
       <PrevButton

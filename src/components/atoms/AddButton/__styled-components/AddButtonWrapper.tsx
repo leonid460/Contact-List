@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 
 const AddButtonWrapper = styled.button`
@@ -26,9 +24,4 @@ const AddButtonWrapper = styled.button`
 `;
 
 
-const AddButton = () => (
-  <AddButtonWrapper as={NavLink} to='/create' >+</AddButtonWrapper>
-)
-
-
-export default AddButton;
+export default AddButtonWrapper;

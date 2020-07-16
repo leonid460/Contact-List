@@ -1,35 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useStore } from 'store';
 import { logout } from 'store/UserInfo/actions';
 import Avatar from 'components/atoms/Avatar';
-import Button from 'components/atoms/Button';
-import { TopPanelHeight } from 'variables';
+import LogOutButtonContainer from './__styled-components/LogOutButtonContainer';
+import TopPanelWrapper from './__styled-components/TopPanelWrapper';
 
-
-const TopPanelWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: ${TopPanelHeight}px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background: white;
-`;
-
-const LogOutButton = styled(Button)`
-  background: #F8CECC;
-  color: white;
-  border: none;
-  margin-right: 15px;
-  font-weight: 600;
-
-  &:hover {
-    background: #E3BEBC;
-  }
-`;
 
 const TopPanel = () => {
   const { userInfoDispatch } = useStore();
@@ -45,7 +20,7 @@ const TopPanel = () => {
       <Avatar>
         { username && username}
       </Avatar>
-      <LogOutButton onClick={handleLogOut}>Log Out</LogOutButton>
+      <LogOutButtonContainer onClick={handleLogOut}>Log Out</LogOutButtonContainer>
     </TopPanelWrapper>
   );
 }

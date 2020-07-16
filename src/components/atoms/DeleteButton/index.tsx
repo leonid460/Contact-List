@@ -1,20 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import ButtonWrapper from './__styled-components/ButtonWrapper';
 
-
-const ButtonWrapper = styled.button`
-  width: 40px;
-  height: 40px;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 5px;
-  background: #FF9999;
-  cursor: pointer;
-
-  &:hover {
-    background: #EA8B8B;
-  }
-`;
 
 type OnClick = ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
 

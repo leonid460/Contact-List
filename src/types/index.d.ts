@@ -4,3 +4,10 @@ export type Contact = {
   company: string;
   phone: string;
 }
+
+export type NotificationMessage = {
+  content: string;
+  type?: NotificationType
+}
+
+export type NotificationType = 'info' | 'error';

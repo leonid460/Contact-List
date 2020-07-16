@@ -1,52 +1,20 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import styled from 'styled-components';
 import { useStore } from 'store';
-import TableRow from 'components/molecules/ContactsTableRow';
-import TableCell from 'components/atoms/ContactsTableCell';
 import AddButton from 'components/atoms/AddButton';
 import DeleteButton from 'components/atoms/DeleteButton';
+import TableRow from 'components/molecules/ContactsTableRow';
 import SearchBar from 'components/molecules/SearchBar';
 import PageSelector from 'components/molecules/PageSelector';
 import MainPageTemplate from 'components/templates/MainPage';
+import HeaderCell from './__styled-components/HeaderCell';
+import MainRowsWrapper from './__styled-components/MainRowsWrapper';
+import TableContainer from './__styled-components/TableContainer';
+import TableHeaderWrapper from './__styled-components/TableHeaderWrapper';
 import { getContacts } from 'services/getContacts';
 import { searchContacts } from 'services/searchContacts';
 import { deleteContactWithId } from 'services/deleteContactWithId';
 import { Contact } from 'types';
-import { ContactsTableParams, } from 'variables';
-
-
-const TableContainer = styled.div`
-  display: block;
-  height: calc(100% - ${ContactsTableParams.searchBarHeight + 76}px);
-`;
-
-const MainRowsWrapper = styled.div`
-  max-height: calc(100% - 56px);
-  height: 100%;
-  overflow-y: scroll;
-`;
-
-const TableHeaderWrapper = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  transition: 0.5s;
-  margin: 0;
-  border-radius: 0;
-  background: #C7C7C7;
-`;
-
-const buttonCellsWidth = ContactsTableParams.buttonCellsWidth;
-
-const HeaderCell = styled(TableCell)`
-  align-items: flex-end;
-  width: calc((100% - ${(buttonCellsWidth)*2}px) / 3);
-  
-  color: black;
-
-  &:first-child, &:last-child {
-    width: ${buttonCellsWidth}px;
-  }
-`;
+import { callNotification } from 'utils/callNotification';
 
 
 const MainPage = () => {
@@ -87,7 +55,10 @@ const MainPage = () => {
         }
 
       } catch (error) {
-        console.log(error);
+        callNotification({
+          content: error.message,
+          type: 'error'
+        })
       }
     },
     [mode, page, searchInput, setContacts, setMaxPage, token]
@@ -118,8 +89,15 @@ const MainPage = () => {
     try {
       await deleteContactWithId(id, token);
       deleteFromCheckList(id);
+      callNotification({
+        content: `Successfully deleted contact`,
+        type: 'info'
+      })
     } catch (error) {
-      console.log(error);
+      callNotification({
+        content: `Successfully deleted contact`,
+        type: 'error'
+      })
     }
   }
 
@@ -152,8 +130,11 @@ const MainPage = () => {
       <TableContainer>
         <TableHeaderWrapper>
           <HeaderCell>
-            <AddButton />
-            <DeleteButton onClick={() => handleDeleteSelected()} />
+            <AddButton to='/create'/>
+            {
+              checkList.size !== 0 &&
+              <DeleteButton onClick={() => handleDeleteSelected()} />
+            }
           </HeaderCell>
           <HeaderCell>Name</HeaderCell>
           <HeaderCell>Company</HeaderCell>

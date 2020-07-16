@@ -1,18 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import EditButtonWrapper from './__styled-components/EditButtonWrapper';
 
-
-const EditButtonWrapper = styled.div`
-  padding: 2px;
-  border-radius: 6px;
-  height: 26px;
-  cursor: pointer;
-
-  &:hover {
-    background: #adadad;
-  }
-`;
 
 type EditButtonProps = {
   to: string;

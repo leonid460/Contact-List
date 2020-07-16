@@ -1,14 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import Wrapper from './__styled-components/Wrapper';
 
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-`;
 
 type SimpleWindowPage = {
   children: React.ReactNode

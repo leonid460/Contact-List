@@ -1,20 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import ContactRowWrapper from './__styled-components/ContactRowWrapper';
 import TableCell from 'components/atoms/ContactsTableCell';
 import EditButton from 'components/atoms/EditButton';
-import { ContactsTableParams } from 'variables';
 import Avatar from 'components/atoms/Avatar';
 import { Contact } from 'types';
 
-
-const TableRow = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  margin: ${ContactsTableParams.rowMargin}px;
-  border-radius: 5px;
-  animation: appear 0.5s ease;
-  background: #EDEDED;
-`;
 
 export type ContactRowProps = Contact & {
   checked: boolean;
@@ -22,7 +12,7 @@ export type ContactRowProps = Contact & {
 };
 
 const ContactRow = (props: ContactRowProps) => (
-  <TableRow>
+  <ContactRowWrapper>
     <TableCell>
       <input
         type='checkbox'
@@ -37,7 +27,7 @@ const ContactRow = (props: ContactRowProps) => (
     <TableCell>
       <EditButton to={`/edit/${props.id}`} />
     </TableCell>
-  </TableRow>
+  </ContactRowWrapper>
 )
 
 
