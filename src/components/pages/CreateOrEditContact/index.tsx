@@ -95,7 +95,9 @@ const CreateOrEditPage = ({ type }: CreateOrEditPageProps) => {
           setValue={setPhone}
           placeholder='Phone'
         />
-        <SubmitButton type='submit'>Log In</SubmitButton>
+        <SubmitButton type='submit'>
+          {type === 'edit' ? 'Save' : 'Create'}
+        </SubmitButton>
       </FormContainer>
     </SimplePage>
   );
